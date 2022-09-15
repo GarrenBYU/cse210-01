@@ -5,9 +5,17 @@ lineOne = []
 lineTwo = []
 lineThree = []
 inbetweenLine=[]
+win=""
 def main():
-    person = 1
+    player = 1
     grid()
+    while (win != "victory"):
+        desicionOne = input("What number do you want to place?")
+        move(desicionOne, 1)
+        desicionTwo = input("What number do you want to place?")
+        move(desicionTwo, 2)
+    if (win == "victory"):
+        print(f"Player {player} wins")
 
 def grid():
     lineOne = ["1", "|", "2", "|", "3"]
@@ -21,7 +29,7 @@ def grid():
     print(*lineThree)
     return lineOne and lineTwo and lineThree and inbetweenLine
 
-def move(number, person):
+def move(number, player):
     if (0 < number < 4):
         line = lineOne
     elif (3 < number < 7):
@@ -33,18 +41,18 @@ def move(number, person):
 
     place = line.index(number)
 
-    if (person == 1):
+    if (player == 1):
         if(line[place] != "X" or line[place] != "O"):
             line = line.replace(number, "X")
-            person = 0
-            return line
+            player = 2
+            return line and player
         else:
             print("That spot has already been taken")
     else:
         if(line[place] != "X" or line[place] != "O"):
             line = line.replace(number, "O")
-            person = 1
-            return line
+            player = 1
+            return line and player
         else:
             print("That spot has already been taken")
 
