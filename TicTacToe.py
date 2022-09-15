@@ -19,16 +19,29 @@ def grid():
     print(*lineThree)
     return lineOne and lineTwo and lineThree and inbetweenLine
 
-def move(line, place, number, person):
+def move(number, person):
+    if (0 < number < 4):
+        line = lineOne
+    elif (3 < number < 7):
+        line = lineTwo
+    elif (6 < number < 10):
+        line = lineThree
+    else:
+        print("This is not a number option")
+
+    place = line.index(number)
+
     if (person == 1):
         if(line[place] != "X" or line[place] != "O"):
             line = line.replace(number, "X")
+            person = 0
             return line
         else:
             print("That spot has already been taken")
     else:
         if(line[place] != "X" or line[place] != "O"):
             line = line.replace(number, "O")
+            person = 1
             return line
         else:
             print("That spot has already been taken")
