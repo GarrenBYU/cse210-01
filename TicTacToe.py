@@ -1,6 +1,10 @@
 #Tic Tac Toe Assignment
 #By: Garren Meisman
 def main():
+    lineOne = []
+    lineTwo = []
+    lineThree = []
+    inbetweenLine=[]
     grid()
 def grid():
     lineOne = ["1", "|", "2", "|", "3"]
@@ -12,5 +16,6 @@ def grid():
     print(*lineTwo)
     print(*inbetweenLine)
     print(*lineThree)
+    return lineOne and lineTwo and lineThree and inbetweenLine
 
 main()
