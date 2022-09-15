@@ -1,10 +1,11 @@
 #Tic Tac Toe Assignment
 #By: Garren Meisman
+
+lineOne = []
+lineTwo = []
+lineThree = []
+inbetweenLine=[]
 def main():
-    lineOne = []
-    lineTwo = []
-    lineThree = []
-    inbetweenLine=[]
     person = 1
     grid()
 
@@ -47,12 +48,21 @@ def move(number, person):
         else:
             print("That spot has already been taken")
 
-def victoryLat(line):
+def victory(line, place):
     count = 1
     prev = count - 1
     cont = count + 1
     win = ""
     if (line[count] == line[prev] == line[cont]):
+        win = "victory"
+        return win
+    elif (lineOne[place] == lineTwo[place] == lineThree[place]):
+        win = "victory"
+        return win    
+    elif (lineOne[0] == lineTwo[1] == lineThree[2]):
+        win = "victory"
+        return win
+    elif (lineOne[2] == lineTwo[1] == lineThree[0]):
         win = "victory"
         return win
 
