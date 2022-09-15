@@ -5,6 +5,7 @@ def main():
     lineTwo = []
     lineThree = []
     inbetweenLine=[]
+    person = 1
     grid()
 
 def grid():
@@ -45,5 +46,14 @@ def move(number, person):
             return line
         else:
             print("That spot has already been taken")
+
+def victoryLat(line):
+    count = 1
+    prev = count - 1
+    cont = count + 1
+    win = ""
+    if (line[count] == line[prev] == line[cont]):
+        win = "victory"
+        return win
 
 main()
