@@ -1,15 +1,21 @@
 #Tic Tac Toe Assignment
 #By: Garren Meisman
-
 win=""
-lineOne = ["1", "|", "2", "|", "3"]
-lineTwo = ["4", "|", "5", "|", "6"]
-lineThree = ["7", "|", "8", "|", "9"]
+OGGridOne = ["1", "|", "2", "|", "3"]
+OGGridTwo = ["4", "|", "5", "|", "6"]
+OGGridThree = ["7", "|", "8", "|", "9"]
+OGlineOne = ["1", "|", "2", "|", "3"]
+OGlineTwo = ["4", "|", "5", "|", "6"]
+OGlineThree = ["7", "|", "8", "|", "9"]
 inbetweenLine = ["-", "+", "-", "+", "-"]
 def main():
     player = 1
+    win=0
     #grid
-    while (win != "victory"):
+    lineOne = OGlineOne
+    lineTwo = OGlineTwo
+    lineThree = OGlineThree
+    while(win == 0):
         print(*lineOne)
         print(*inbetweenLine)
         print(*lineTwo)
@@ -22,9 +28,13 @@ def main():
         print(*lineTwo)
         print(*inbetweenLine)
         print(*lineThree)
+        if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
+            break
         desicionTwo = input("What number do you want to place? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
-    if (win == "victory"):
+        if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == "victory"):
+            break
+    if (victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
         print(f"Player {player} wins")
 
 def move(number, player, line1, line2, line3):
@@ -42,7 +52,6 @@ def move(number, player, line1, line2, line3):
     if (player == 1):
         if(line[place] != "X" or line[place] != "O"):
             line.remove(number)
-            print(line)
             line.insert(place, "X")
             player = 2
             return line and player
@@ -57,22 +66,34 @@ def move(number, player, line1, line2, line3):
         else:
             print("That spot has already been taken")
 
-def victory(line, place):
+def victory(number, line1, line2, line3, score):
+    if (0 < int(number) < 4):
+        line = line1
+        OGline = OGGridOne
+    elif (3 < int(number) < 7):
+        line = line2
+        OGline = OGGridTwo
+    elif (6 < int(number) < 10):
+        line = line3
+        OGline = OGGridThree
+    else:
+        print("This is not a number option")
+
+    place = OGline.index(number)
     count = 1
     prev = count - 1
     cont = count + 1
-    win = ""
     if (line[count] == line[prev] == line[cont]):
-        win = "victory"
-        return win
-    elif (lineOne[place] == lineTwo[place] == lineThree[place]):
-        win = "victory"
-        return win    
-    elif (lineOne[0] == lineTwo[1] == lineThree[2]):
-        win = "victory"
-        return win
-    elif (lineOne[2] == lineTwo[1] == lineThree[0]):
-        win = "victory"
-        return win
+        score = 1
+        return score
+    elif (line1[place] == line2[place] == line3[place]):
+        score = 1
+        return score    
+    elif (line1[0] == line2[1] == line3[2]):
+        score = 1
+        return score
+    elif (line1[2] == line2[1] == line3[0]):
+        score = 1
+        return score
 
 main()
