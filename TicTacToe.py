@@ -2,36 +2,36 @@
 #By: Garren Meisman
 
 win=""
+lineOne = ["1", "|", "2", "|", "3"]
+lineTwo = ["4", "|", "5", "|", "6"]
+lineThree = ["7", "|", "8", "|", "9"]
+inbetweenLine = ["-", "+", "-", "+", "-"]
 def main():
     player = 1
     #grid
-    global lineOne
-    lineOne = ["1", "|", "2", "|", "3"]
-    global lineTwo
-    lineTwo = ["4", "|", "5", "|", "6"]
-    global lineThree
-    lineThree = ["7", "|", "8", "|", "9"]
-    inbetweenLine = ["-", "+", "-", "+", "-"]
-    print(*lineOne)
-    print(*inbetweenLine)
-    print(*lineTwo)
-    print(*inbetweenLine)
-    print(*lineThree)
     while (win != "victory"):
-        desicionOne = input("What number do you want to place?")
+        print(*lineOne)
+        print(*inbetweenLine)
+        print(*lineTwo)
+        print(*inbetweenLine)
+        print(*lineThree)
+        desicionOne = input("What number do you want to place? ")
         move(desicionOne, 1, lineOne, lineTwo, lineThree)
-        desicionTwo = input("What number do you want to place?")
+        desicionTwo = input("What number do you want to place? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
     if (win == "victory"):
         print(f"Player {player} wins")
 
-def move(number, player, lineOne, lineTwo, lineThree):
+def move(number, player, line1, line2, line3):
     if (0 < int(number) < 4):
-        line = lineOne
+        line = line1
+        return line
     elif (3 < int(number) < 7):
-        line = lineTwo
+        line = line2
+        return line
     elif (6 < int(number) < 10):
-        line = lineThree
+        line = line3
+        return line
     else:
         print("This is not a number option")
 
