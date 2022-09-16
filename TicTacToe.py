@@ -5,8 +5,11 @@ win=""
 def main():
     player = 1
     #grid
+    global lineOne
     lineOne = ["1", "|", "2", "|", "3"]
+    global lineTwo
     lineTwo = ["4", "|", "5", "|", "6"]
+    global lineThree
     lineThree = ["7", "|", "8", "|", "9"]
     inbetweenLine = ["-", "+", "-", "+", "-"]
     print(*lineOne)
