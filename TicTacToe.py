@@ -17,6 +17,11 @@ def main():
         print(*lineThree)
         desicionOne = input("What number do you want to place? ")
         move(desicionOne, 1, lineOne, lineTwo, lineThree)
+        print(*lineOne)
+        print(*inbetweenLine)
+        print(*lineTwo)
+        print(*inbetweenLine)
+        print(*lineThree)
         desicionTwo = input("What number do you want to place? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
     if (win == "victory"):
@@ -25,13 +30,10 @@ def main():
 def move(number, player, line1, line2, line3):
     if (0 < int(number) < 4):
         line = line1
-        return line
     elif (3 < int(number) < 7):
         line = line2
-        return line
     elif (6 < int(number) < 10):
         line = line3
-        return line
     else:
         print("This is not a number option")
 
@@ -39,17 +41,17 @@ def move(number, player, line1, line2, line3):
 
     if (player == 1):
         if(line[place] != "X" or line[place] != "O"):
-            line = line.remove(number)
+            line.remove(number)
             print(line)
-            line = line.insert(place, "X")
+            line.insert(place, "X")
             player = 2
             return line and player
         else:
             print("That spot has already been taken")
     else:
         if(line[place] != "X" or line[place] != "O"):
-            line = line.remove(number)
-            line = line.insert(place, "O")
+            line.remove(number)
+            line.insert(place, "O")
             player = 1
             return line and player
         else:
