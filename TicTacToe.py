@@ -36,7 +36,6 @@ def main():
             break
         desicionTwo = input("What number do you want to place Player 2? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
-        print(i)
         if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
             break
         print(*lineOne)
@@ -45,7 +44,7 @@ def main():
         print(*inbetweenLine)
         print(*lineThree)
         i = i+1
-        print(i)
+
     if (victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
         print(f"Player {player} wins")
     else:
