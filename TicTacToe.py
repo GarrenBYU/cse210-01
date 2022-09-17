@@ -15,12 +15,12 @@ def main():
     lineOne = OGlineOne
     lineTwo = OGlineTwo
     lineThree = OGlineThree
+    print(*lineOne)
+    print(*inbetweenLine)
+    print(*lineTwo)
+    print(*inbetweenLine)
+    print(*lineThree)
     while(win == 0):
-        print(*lineOne)
-        print(*inbetweenLine)
-        print(*lineTwo)
-        print(*inbetweenLine)
-        print(*lineThree)
         desicionOne = input("What number do you want to place Player 1? ")
         move(desicionOne, 1, lineOne, lineTwo, lineThree)
         print(*lineOne)
@@ -32,8 +32,13 @@ def main():
             break
         desicionTwo = input("What number do you want to place Player 2? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
-        if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == "victory"):
+        if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
             break
+        print(*lineOne)
+        print(*inbetweenLine)
+        print(*lineTwo)
+        print(*inbetweenLine)
+        print(*lineThree)
     if (victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
         print(f"Player {player} wins")
 
@@ -80,20 +85,21 @@ def victory(number, line1, line2, line3, score):
         print("This is not a number option")
 
     place = OGline.index(number)
-    count = 1
-    prev = count - 1
-    cont = count + 1
+    count = 2
+    prev = count - 2
+    cont = count + 2
     if (line[count] == line[prev] == line[cont]):
         score = 1
         return score
     elif (line1[place] == line2[place] == line3[place]):
         score = 1
         return score    
-    elif (line1[0] == line2[1] == line3[2]):
+    elif (line1[0] == line2[2] == line3[4]):
         score = 1
         return score
-    elif (line1[2] == line2[1] == line3[0]):
+    elif (line1[4] == line2[2] == line3[0]):
         score = 1
         return score
 
-main()
+if __name__ == "__main__":
+    main()
