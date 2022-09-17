@@ -21,7 +21,7 @@ def main():
         print(*lineTwo)
         print(*inbetweenLine)
         print(*lineThree)
-        desicionOne = input("What number do you want to place? ")
+        desicionOne = input("What number do you want to place Player 1? ")
         move(desicionOne, 1, lineOne, lineTwo, lineThree)
         print(*lineOne)
         print(*inbetweenLine)
@@ -30,7 +30,7 @@ def main():
         print(*lineThree)
         if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
             break
-        desicionTwo = input("What number do you want to place? ")
+        desicionTwo = input("What number do you want to place Player 2? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
         if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == "victory"):
             break
