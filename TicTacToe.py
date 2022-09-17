@@ -10,6 +10,7 @@ OGlineThree = ["7", "|", "8", "|", "9"]
 inbetweenLine = ["-", "+", "-", "+", "-"]
 def main():
     player = 1
+    i = 0
     win=0
     #grid
     lineOne = OGlineOne
@@ -30,8 +31,12 @@ def main():
         print(*lineThree)
         if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
             break
+        i = i+1
+        if(i >= 9):
+            break
         desicionTwo = input("What number do you want to place Player 2? ")
         move(desicionTwo, 2, lineOne, lineTwo, lineThree)
+        print(i)
         if(victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
             break
         print(*lineOne)
@@ -39,8 +44,12 @@ def main():
         print(*lineTwo)
         print(*inbetweenLine)
         print(*lineThree)
+        i = i+1
+        print(i)
     if (victory(desicionOne, lineOne, lineTwo, lineThree, win) == 1):
         print(f"Player {player} wins")
+    else:
+        print("Good game it is a Cats Game!")
 
 def move(number, player, line1, line2, line3):
     if (0 < int(number) < 4):
