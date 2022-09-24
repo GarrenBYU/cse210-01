@@ -1,6 +1,6 @@
 import random
-from player import Player
-from deck import Deck
+from game.player import Player
+from game.deck import Deck
 class Dealer:
     previous_card = Deck.ogValue
     current_card = Deck.newValue
@@ -20,7 +20,7 @@ class Dealer:
                 again = input("Play again? [y/n] ")
                 player.addiction = player.playAgain(again)
                 self.previous_card = self.current_card
-                deck.newValue = random.randint(1, 14)
+                deck.newValue = random.randint(1, 13)
                 self.current_card = deck.newValue
     def choice(self, current, next, player):
         if(player.guess == "l"):
