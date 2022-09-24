@@ -55,7 +55,7 @@ def playAgain(decision):
         return addiction
     else:
         addiction = 2
-        print(f"Congrats you dont have a gambling addiction. 😉 Your end score was {Player.points}")
+        print(f"Congrats you dont have a gambling addiction. 😉 Your end score was {Player.points}!")
         return addiction
 
 if __name__ == "__main__":
