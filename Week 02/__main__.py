@@ -1,4 +1,3 @@
-import dealer
-def main():
-if __name__ == "__main__":
-    main()
+from dealer import Dealer
+dealer = Dealer()
+dealer.start_game()
