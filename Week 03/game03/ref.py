@@ -47,6 +47,9 @@ class Ref():
         for i in dontFall:
             if i >= skyDiver.lives:
                 print(dontFall[i])
+        print('O')
+        print('/|\ ')
+        print('/ \ ')
 
     def spaces(self, word):
         spaces = []
