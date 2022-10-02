@@ -1,4 +1,5 @@
-from game.ref import Ref
+from weakref import ref
+from game03.ref import Ref
 
-dealer = Ref()
-dealer.start_game()
+Ref = Ref()
+ref.start_game()
