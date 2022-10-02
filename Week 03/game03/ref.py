@@ -1,6 +1,7 @@
+from typing import Counter
 from pyparsing import Word
 from game03.wordMaker import Word_Maker
-from skyDiver import Sky_Diver
+from game03.skyDiver import Sky_Diver
 class Ref():
     
     """The person that leads the game and takes from the parachute
@@ -43,10 +44,15 @@ class Ref():
                     skyDiver.crazy = skyDiver.playAgain(again)
     def parachute(self):
         skyDiver = Sky_Diver
+        counter = 5
         dontFall = ['___', '/   \ ', '___', '\   /', '\  /']
-        for i in dontFall:
-            if i >= skyDiver.lives:
-                print(dontFall[i])
+        while(skyDiver.lives != 0):
+            if counter >= skyDiver.lives:
+                while(counter != 0)
+                print(dontFall[counter])
+                counter = counter - 1
+            else:
+                counter = counter - 1
         print('O')
         print('/|\ ')
         print('/ \ ')
