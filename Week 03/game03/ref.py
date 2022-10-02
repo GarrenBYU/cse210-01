@@ -22,41 +22,45 @@ class Ref():
         """
         wordMaker = Word_Maker
         skyDiver = Sky_Diver
-        while(skyDiver.crazy == True):
-            i = 1
-            while(1 == 1):
-                self.parachute()
-                if(i==1):
-                    newWord = wordMaker.randomWord(Word_Maker)
-                    spaces = self.spaces(newWord)
-                    i = i + 1
-                print(' ' .join(spaces))
-                user_choice = input("What letter do you want to guess? ")
-                user_choice = user_choice.lower()
-                counter = 0
-                stop = False
-                for i in newWord:
-                    if user_choice == i and stop == False:
-                        print(f"Congrats you guessed a letter!")
-                        self.replaceSpaces(user_choice, newWord, spaces)
-                        counter = counter + 1
-                        stop = True
-                    else:
-                        counter = counter + 1
-                    if(counter == len(newWord) and stop == False):
-                        skyDiver.lives = skyDiver.lives - 1
-                        print(f"That is not a letter! You have {skyDiver.lives} lives left.")
-                again = skyDiver.loser(Sky_Diver)
-                if(again == False):
-                    again = input("Play again? [y/n] ")
-                    skyDiver.crazy = skyDiver.playAgain(skyDiver, again)
+        #while(skyDiver.crazy == True):
+        i = 1
+        win = False
+        while(win == False):
+            self.parachute()
+            if(i==1):
+                newWord = wordMaker.randomWord(Word_Maker)
+                spaces = self.spaces(newWord)
+                i = i + 1
+            print(' ' .join(spaces))
+            user_choice = input("What letter do you want to guess? ")
+            user_choice = user_choice.lower()
+            counter = 0
+            stop = False
+            for i in newWord:
+                if user_choice == i and stop == False:
+                    print(f"Congrats you guessed a letter!")
+                    self.replaceSpaces(user_choice, newWord, spaces)
+                    counter = counter + 1
+                    stop = True
+                else:
+                    counter = counter + 1
+                if(counter == len(newWord) and stop == False):
+                    skyDiver.lives = skyDiver.lives - 1
+                    print(f"That is not a letter! You have {skyDiver.lives} lives left.")
+            again = skyDiver.loser(Sky_Diver)
+            if(again == False):
+                #playAgain = input("Play again? [y/n] ")
+                #skyDiver.crazy = skyDiver.playAgain(skyDiver, playAgain)
                 win = True
-                for i in spaces:
-                    if i == '_':
-                        winCounter = winCounter + 1
-                        win = False
-                if win == True:
-                    print("Congrats You Won! 🥇")
+                return win
+            win = True
+            for i in spaces:
+                if i == '_':
+                    win = False
+            if win == True:
+                print("Congrats You Won! 🥇")
+                skyDiver.crazy = False
+                win = True
     def parachute(self):
         skyDiver = Sky_Diver
         counter = 5
