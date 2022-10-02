@@ -1,3 +1,4 @@
+from re import I
 from typing import Counter
 from pyparsing import Word
 from game03.wordMaker import Word_Maker
@@ -22,52 +23,72 @@ class Ref():
         wordMaker = Word_Maker
         skyDiver = Sky_Diver
         while(skyDiver.crazy == True):
+            i = 1
             while(1 == 1):
-                i = 1
                 self.parachute()
                 if(i==1):
-                    word = wordMaker.randomWord
-                    spaces = self.spaces()
+                    newWord = wordMaker.randomWord(Word_Maker)
+                    spaces = self.spaces(newWord)
                     i = i + 1
+                print(' ' .join(spaces))
                 user_choice = input("What letter do you want to guess? ")
-                user_choice = user_choice.lower
-                for i in word:
-                    if user_choice == word[i]:
+                user_choice = user_choice.lower()
+                counter = 0
+                stop = False
+                for i in newWord:
+                    if user_choice == i and stop == False:
                         print(f"Congrats you guessed a letter!")
-                        self.replaceSpaces(user_choice, word, spaces)
+                        self.replaceSpaces(user_choice, newWord, spaces)
+                        counter = counter + 1
+                        stop = True
                     else:
+                        counter = counter + 1
+                    if(counter == len(newWord) and stop == False):
                         skyDiver.lives = skyDiver.lives - 1
                         print(f"That is not a letter! You have {skyDiver.lives} lives left.")
-                skyDiver.loser()
-                if(skyDiver.crazy == True):
+                again = skyDiver.loser(Sky_Diver)
+                if(again == False):
                     again = input("Play again? [y/n] ")
-                    skyDiver.crazy = skyDiver.playAgain(again)
+                    skyDiver.crazy = skyDiver.playAgain(skyDiver, again)
+                win = True
+                for i in spaces:
+                    if i == '_':
+                        winCounter = winCounter + 1
+                        win = False
+                if win == True:
+                    print("Congrats You Won! 🥇")
     def parachute(self):
         skyDiver = Sky_Diver
         counter = 5
-        dontFall = ['___', '/   \ ', '___', '\   /', '\  /']
-        while(skyDiver.lives != 0):
-            if counter >= skyDiver.lives:
-                while(counter != 0)
-                print(dontFall[counter])
-                counter = counter - 1
+        place = 0
+        dontFall = [' ___', '/   \ ', ' ___', '\   /', ' \ /']
+        while(counter > 0):
+            if counter <= skyDiver.lives:
+                while(counter != 0):
+                    print(dontFall[place])
+                    counter = counter - 1
+                    place = 1 + place
             else:
                 counter = counter - 1
-        print('O')
-        print('/|\ ')
-        print('/ \ ')
+                dontFall.pop(0)
+        print('  O')
+        print(' /|\ ')
+        print(' / \ ')
 
     def spaces(self, word):
-        spaces = []
+        spaces = ["_"]
         while(len(spaces) < len(word)):
-            spaces.append('_ ')
+            spaces.append('_')
         return spaces
 
     def replaceSpaces(self, letter, word, spaces):
         bo = 0
-        while(bo != -1):
-            index = word.findIndex(letter)
-            spaces[index] = letter
+        for i in word:
+            if i == letter:
+                spaces[bo] = letter
+                bo = bo + 1
+            else:
+                bo = bo + 1
         return spaces
             
         

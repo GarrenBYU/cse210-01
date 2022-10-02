@@ -13,5 +13,6 @@ class Word_Maker:
 
     def randomWord(self):
         newNumber = random.randint(1, self.wordslen)
+        newNumber = newNumber - 1
         newWord = self.words[newNumber]
         return newWord
