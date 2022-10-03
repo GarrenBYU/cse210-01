@@ -1,6 +1,3 @@
-from re import I
-from typing import Counter
-from pyparsing import Word
 from game03.wordMaker import Word_Maker
 from game03.skyDiver import Sky_Diver
 class Ref():
