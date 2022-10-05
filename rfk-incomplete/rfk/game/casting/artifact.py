@@ -1,7 +1,8 @@
 from game.casting.actor import Actor
 
-class Artifact(Actor):
-    
+
+class Artifact(Actor):    
+
     def __init__(self):
         self._message = ""
 
